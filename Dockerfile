@@ -3,7 +3,6 @@ FROM ubuntu:20.04
 LABEL maintainer="Vini Pavin" \
       name="vpavin/essentia-coral-docker" \
       github="https://github.com/vpavin/essentia-coral-docker" \
-      dockerhub="https://hub.docker.com/r/vpavin/essentia-coral" \
       org.opencontainers.image.authors="Vini Pavin" \
       org.opencontainers.image.source="https://github.com/vpavin/essentia-coral-docker"
 
