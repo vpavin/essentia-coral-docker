@@ -32,8 +32,9 @@ RUN apt-get install -y \
     libavcodec58 libavformat58 libavutil56 libavresample4 \
     && rm -rf /var/lib/apt/lists/*
 
-    RUN apt-get update \
-    && apt-get install -y build-essential python3-dev git \
+# Install dependencies and build essentia
+RUN apt-get update \
+    && apt-get install -y build-essential python3-dev python3-pip \
     libfftw3-dev libavcodec-dev libavformat-dev libavresample-dev \
     libsamplerate0-dev libtag1-dev libyaml-dev \
     && mkdir /essentia && cd /essentia && git clone ${ESSENTIA_GIT} \
@@ -47,6 +48,10 @@ RUN apt-get install -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && cd / && rm -rf /essentia/essentia
+
+# Install tensorflow support
+# https://github.com/MTG/essentia-docker?tab=readme-ov-file#tensorflow-support
+RUN pip install --no-cache-dir essentia-tensorflow
 
 ENV PYTHONPATH /usr/local/lib/python3/dist-packages
 
